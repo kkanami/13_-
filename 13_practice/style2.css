@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-    margin:0 auto;
+    margin: 0 auto;
     margin-top: 30px;
     margin-bottom: 20px;
     border-left: 4px red solid;
@@ -24,22 +24,33 @@ form{
     width: 500px;
 }
 
-form div{
+form div {
     padding: 15px;
 }
 
-.text, textarea, .dropdown{
+.text,.dropdown {
     border: 1px solid #dfdfdf;
     padding: 5px;
     color: #999;
     background: #fff;
 }
 
-.submit{
+.submit {
     border: 1px solid lightgray;
     padding: 4px 10px;
     color: white;
     background-color: #bfbfbf;
     border-radius: 5px;
     border-bottom: 2px solid gray;
+}
+
+form.back{
+    text-align: center;
+    background-color: none;
+    border: none;
+}
+
+.hidden{
+    color:red;
+    font-size: 10pt;
 }

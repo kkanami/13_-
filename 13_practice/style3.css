@@ -49,3 +49,8 @@ form{
     border-radius: 5px;
     border-bottom: 2px solid #E08600;
 }
+
+.span{
+    font-size: 30pt;
+    font-weight: bold;
+}

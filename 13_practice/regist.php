@@ -11,18 +11,19 @@
 
 <body>
     <h1>アカウント登録</h1>
-    <form method="post" action="regist_confirm.php">
+    <form method="post" class="main" action="regist_confirm.php">
 
         <div>
             <label>名前（姓）</label>
             <br>
-            <input type="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" class="text" size="35" maxlength="10" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
+            <input type="text" class="text" size="35" maxlength="10" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
+          
         </div>
 
         <div>
             <label>名前（名）</label>
             <br>
-            <input type="text"  class="text" size="35" maxlength="10" name="last_name" value="<?php if(!empty($_POST['last_name'])){echo $_POST['last_name'];}?>">
+            <input type="text" class="text" size="35" maxlength="10" name="last_name" value="<?php if(!empty($_POST['last_name'])){echo $_POST['last_name'];}?>">
         </div>
 
         <div>
@@ -34,7 +35,7 @@
         <div>
             <label>カナ（名）</label>
             <br>
-            <input type="text" pattern="[\u30A1-\u30F6]*"　inputmode="katakana" class="text" size="35" maxlength="10" name="last_name_kana" value="<?php if(!empty($_POST['last_name_kana'])){echo $_POST['last_name_kana'];}?>">
+            <input type="text" pattern="[\u30A1-\u30F6]*" 　inputmode="katakana" class="text" size="35" maxlength="10" name="last_name_kana" value="<?php if(!empty($_POST['last_name_kana'])){echo $_POST['last_name_kana'];}?>">
         </div>
 
         <div>
@@ -52,10 +53,10 @@
         <div>
             <label>性別</label>
             <br>
-            <input type="radio" id="0" name="gender" value="0" checked />
+            <input type="radio" id="0" name="gender" value="0" id="0" checked />
             <label for="0">男</label>
 
-            <input type="radio" id="1" name="gender" value="1" />
+            <input type="radio" id="1" name="gender" value="1" id="1" />
             <label for="1">女</label>
         </div>
 
@@ -156,17 +157,19 @@
         </div>
 
 
-        　　確認する　　　　←UIはボタン形式、該当ボタン押下時に入力チェック（後述）をする
+        　
         　　
         　
+        <!--
         【入力可能な文字種類】
-        　　「名前（姓）」「名前（名）」はひらがな、漢字のみ入力可
+      ？  　　「名前（姓）」「名前（名）」はひらがな、漢字のみ入力可
         　　「カナ（姓）」「カナ（名）」はカタカナのみ入力可
         　　「パスワード」は半角英数字のみ入力可
         　　「メールアドレス」は半角英数字、半角ハイフン、半角記号（ハイフンとアットマーク）のみ入力可能
         　　「郵便番号」は半角数字のみ入力可
-        　　「住所（市区町村）」「住所（番地）」はひらがな、漢字、数字、カタカナ、記号（ハイフンとスペース）のみ入力可
+      ？  　　「住所（市区町村）」「住所（番地）」はひらがな、漢字、数字、カタカナ、記号（ハイフンとスペース）のみ入力可
 
+       　確認する　　　　←UIはボタン形式、該当ボタン押下時に入力チェック（後述）をする
         　【入力チェックの仕様】
         　　アカウント登録画面の項目は全て必須入力とする為、「登録する」ボタン押下時にエラーチェックを行う。
         　　未入力または未選択の項目が1件でもあれば、該当項目の下にエラーメッセージを赤字で表示する。
@@ -175,25 +178,35 @@
         　【パスワードをDB登録する際の注意】
         　　パスワードはセキュリティのため、ハッシュ化してDB登録しておく。
         　　ハッシュ化のアルゴリズムやオプションの設定値は任意の値とする。
+-->
 
 
 
 
         <div>
-<!--         エラーチェック未実装  -->
+            <!--         エラーチェック未実装  -->
+
             <input type="submit" class="submit" value="確認する">
-             <input type="hidden" value="<?php
+
+<!--
+            <input type="hidden" value="<?php
             if(empty($_POST['family_name'])){
             echo "名前（姓）が未入力です。";
             } ?>" name="family_name">
-  
+-->
+
+
         </div>
 
     </form>
+
+
     <br>
-    <form action="index.html">
-        <input type="submit" class="button1" value="TOPページへ戻る">
-    </form>
+
+        <form class="back" action="index.html">
+            <input type="submit" class="back" value="TOPページへ戻る">
+        </form>
+
 
 </body>
 
