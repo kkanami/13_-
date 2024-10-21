@@ -16,14 +16,13 @@
         <div>
             <label>名前（姓）</label>
             <br>
-            <input type="text" class="text" size="35" maxlength="10" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
-          
+            <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
         </div>
 
         <div>
             <label>名前（名）</label>
             <br>
-            <input type="text" class="text" size="35" maxlength="10" name="last_name" value="<?php if(!empty($_POST['last_name'])){echo $_POST['last_name'];}?>">
+            <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" name="last_name" value="<?php if(!empty($_POST['last_name'])){echo $_POST['last_name'];}?>">
         </div>
 
         <div>
@@ -72,63 +71,54 @@
             <label>住所（都道府県）</label>
             <br>
             <select class="dropdown" name="prefecture">
-                <?php
-                $prefecture = array(
-                0 => '選択下さい。',
-                1 => '北海道',
-                2 => '青森県',
-                3 => '岩手県',
-                4 => '宮城県',
-                5 => '秋田県',
-                6 => '山形県',
-                7 => '福島県',
-                8 => '茨城県',
-                9 => '栃木県',
-                10 => '群馬県',
-                11 => '埼玉県',
-                12 => '千葉県',
-                13 => '東京都',
-                14 => '神奈川県',
-                15 => '山梨県',
-                16 => '長野県',
-                17 => '新潟県',
-                18 => '富山県',
-                19 => '石川県',
-                20 => '福井県',
-                21 => '岐阜県',
-                22 => '静岡県',
-                23 => '愛知県',
-                24 => '三重県',
-                25 => '滋賀県',
-                26 => '京都府',
-                27 => '大阪府',
-                28 => '兵庫県',
-                29 => '奈良県',
-                30 => '和歌山県',
-                31 => '鳥取県',
-                32 => '島根県',
-                33 => '岡山県',
-                34 => '広島県',
-                35 => '山口県',
-                36 => '徳島県',
-                37 => '香川県',
-                38 => '愛媛県',
-                39 => '高知県',
-                40 => '福岡県',
-                41 => '佐賀県',
-                42 => '長崎県',
-                43 => '熊本県',
-                44 => '大分県',
-                45 => '宮崎県',
-                46 => '鹿児島県',
-                47 => '沖縄県'
-                );
-                ?>
-
-                <?php foreach($prefecture as $key => $value){ ?>
-                <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                <?php } ?>
-
+                <option value=""></option>
+                <option value="北海道" data-pref-id="01">北海道</option>
+                <option value="青森県" data-pref-id="02">青森県</option>
+                <option value="岩手県" data-pref-id="03">岩手県</option>
+                <option value="宮城県" data-pref-id="04">宮城県</option>
+                <option value="秋田県" data-pref-id="05">秋田県</option>
+                <option value="山形県" data-pref-id="06">山形県</option>
+                <option value="福島県" data-pref-id="07">福島県</option>
+                <option value="茨城県" data-pref-id="08">茨城県</option>
+                <option value="栃木県" data-pref-id="09">栃木県</option>
+                <option value="群馬県" data-pref-id="10">群馬県</option>
+                <option value="埼玉県" data-pref-id="11">埼玉県</option>
+                <option value="千葉県" data-pref-id="12">千葉県</option>
+                <option value="東京都" data-pref-id="13">東京都</option>
+                <option value="神奈川県" data-pref-id="14">神奈川県</option>
+                <option value="新潟県" data-pref-id="15">新潟県</option>
+                <option value="富山県" data-pref-id="16">富山県</option>
+                <option value="石川県" data-pref-id="17">石川県</option>
+                <option value="福井県" data-pref-id="18">福井県</option>
+                <option value="山梨県" data-pref-id="19">山梨県</option>
+                <option value="長野県" data-pref-id="20">長野県</option>
+                <option value="岐阜県" data-pref-id="21">岐阜県</option>
+                <option value="静岡県" data-pref-id="22">静岡県</option>
+                <option value="愛知県" data-pref-id="23">愛知県</option>
+                <option value="三重県" data-pref-id="24">三重県</option>
+                <option value="滋賀県" data-pref-id="25">滋賀県</option>
+                <option value="京都府" data-pref-id="26">京都府</option>
+                <option value="大阪府" data-pref-id="27">大阪府</option>
+                <option value="兵庫県" data-pref-id="28">兵庫県</option>
+                <option value="奈良県" data-pref-id="29">奈良県</option>
+                <option value="和歌山県" data-pref-id="30">和歌山県</option>
+                <option value="鳥取県" data-pref-id="31">鳥取県</option>
+                <option value="島根県" data-pref-id="32">島根県</option>
+                <option value="岡山県" data-pref-id="33">岡山県</option>
+                <option value="広島県" data-pref-id="34">広島県</option>
+                <option value="山口県" data-pref-id="35">山口県</option>
+                <option value="徳島県" data-pref-id="36">徳島県</option>
+                <option value="香川県" data-pref-id="37">香川県</option>
+                <option value="愛媛県" data-pref-id="38">愛媛県</option>
+                <option value="高知県" data-pref-id="39">高知県</option>
+                <option value="福岡県" data-pref-id="40">福岡県</option>
+                <option value="佐賀県" data-pref-id="41">佐賀県</option>
+                <option value="長崎県" data-pref-id="42">長崎県</option>
+                <option value="熊本県" data-pref-id="43">熊本県</option>
+                <option value="大分県" data-pref-id="44">大分県</option>
+                <option value="宮崎県" data-pref-id="45">宮崎県</option>
+                <option value="鹿児島県" data-pref-id="46">鹿児島県</option>
+                <option value="沖縄県" data-pref-id="47">沖縄県</option>
             </select>
 
 
@@ -137,13 +127,13 @@
         <div>
             <label>住所（市区町村）</label>
             <br>
-            <input type="text" class="text" size="35" maxlength="10" name="address_1" value="<?php if(!empty($_POST['address_1'])){echo $_POST['address_1'];}?>">
+            <input type="text" class="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" size="35" maxlength="10" name="address_1" value="<?php if(!empty($_POST['address_1'])){echo $_POST['address_1'];}?>">
         </div>
 
         <div>
             <label>住所（番地）</label>
             <br>
-            <input type="text" class="text" size="100" maxlength="100" name="address_2" value="<?php if(!empty($_POST['address_2'])){echo $_POST['address_2'];}?>">
+            <input type="text" class="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" size="100" maxlength="100" name="address_2" value="<?php if(!empty($_POST['address_2'])){echo $_POST['address_2'];}?>">
         </div>
 
 
@@ -156,46 +146,13 @@
             </select>
         </div>
 
-
-        　
-        　　
-        　
-        <!--
-        【入力可能な文字種類】
-      ？  　　「名前（姓）」「名前（名）」はひらがな、漢字のみ入力可
-        　　「カナ（姓）」「カナ（名）」はカタカナのみ入力可
-        　　「パスワード」は半角英数字のみ入力可
-        　　「メールアドレス」は半角英数字、半角ハイフン、半角記号（ハイフンとアットマーク）のみ入力可能
-        　　「郵便番号」は半角数字のみ入力可
-      ？  　　「住所（市区町村）」「住所（番地）」はひらがな、漢字、数字、カタカナ、記号（ハイフンとスペース）のみ入力可
-
-       　確認する　　　　←UIはボタン形式、該当ボタン押下時に入力チェック（後述）をする
-        　【入力チェックの仕様】
-        　　アカウント登録画面の項目は全て必須入力とする為、「登録する」ボタン押下時にエラーチェックを行う。
-        　　未入力または未選択の項目が1件でもあれば、該当項目の下にエラーメッセージを赤字で表示する。
-        　　例えば「名前（姓）」が未入力の場合、「名前（姓）が未入力です。」とエラーメッセージを表示する。
-        　　もしエラーが0件ならば、アカウント登録確認画面に遷移する。
-        　【パスワードをDB登録する際の注意】
-        　　パスワードはセキュリティのため、ハッシュ化してDB登録しておく。
-        　　ハッシュ化のアルゴリズムやオプションの設定値は任意の値とする。
--->
-
-
-
-
         <div>
             <!--         エラーチェック未実装  -->
 
             <input type="submit" class="submit" value="確認する">
 
-<!--
-            <input type="hidden" value="<?php
-            if(empty($_POST['family_name'])){
-            echo "名前（姓）が未入力です。";
-            } ?>" name="family_name">
--->
 
-
+ 
         </div>
 
     </form>
@@ -203,9 +160,9 @@
 
     <br>
 
-        <form class="back" action="index.html">
-            <input type="submit" class="back" value="TOPページへ戻る">
-        </form>
+    <form class="back" action="index.html">
+        <input type="submit" class="back" value="TOPページへ戻る">
+    </form>
 
 
 </body>
