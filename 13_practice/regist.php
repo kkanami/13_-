@@ -17,6 +17,11 @@
             <label>名前（姓）</label>
             <br>
             <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
+            <br>
+            <div class=error>
+            <?php if (empty($_POST['family_name'])) {echo "名前（姓）を入力してください";} ?>
+            </div>
+
         </div>
 
         <div>
@@ -62,7 +67,7 @@
         <div>
             <label>郵便番号</label>
             <br>
-            <input type="tel" class="text" size="35" maxlength="7" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
+            <input type="number" class="text" size="35" maxlength="7" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
         </div>
 
 
@@ -145,17 +150,19 @@
                 <option value="管理者" <?php if( !empty($_POST['authority']) && $_POST['age'] === "管理者" ){ echo 'selected'; } ?>>管理者</option>
             </select>
         </div>
-
         <div>
             <!--         エラーチェック未実装  -->
 
             <input type="submit" class="submit" value="確認する">
 
 
- 
-        </div>
 
+        </div>
     </form>
+
+
+
+
 
 
     <br>

@@ -54,3 +54,9 @@ form.back{
     color:red;
     font-size: 10pt;
 }
+
+ .error{
+     padding: 10px;
+    font-size: 10px;
+    color: red;
+}
