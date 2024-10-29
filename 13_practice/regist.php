@@ -5,22 +5,32 @@
 <head>
     <meta charset="utf-8">
     <title>アカウント登録画面</title>
+
+    <script type="text/javascript">
+        function check() {
+            if (form.family_name.value == "") {
+                alert("名前（姓）が未入力です。");
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
+
     <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
 
 
 <body>
     <h1>アカウント登録</h1>
-    <form method="post" class="main" action="regist_confirm.php">
+    <form method="post" class="main" action="regist_confirm.php" 　name="form" id="form" onsubmit="return check()">
 
         <div>
             <label>名前（姓）</label>
             <br>
-            <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
+            <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" id="family_name" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
             <br>
-            <div class=error>
-            <?php if (empty($_POST['family_name'])) {echo "名前（姓）を入力してください";} ?>
-            </div>
 
         </div>
 

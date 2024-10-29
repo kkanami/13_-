@@ -1,6 +1,6 @@
-<?php if(empty($_POST['family_name']) || empty($_POST['last_name']) || empty($_POST['family_name_kana'])){ header("Location:http://localhost/13_practice/regist.php");}
-          
-?>
+
+
+
 <!doctype html>
 <html lang="ja">
 
@@ -121,7 +121,7 @@
             <input type="hidden" value="<?php echo $_POST['authority'];?>" name="authority">
         </form>
 
-        
+
 
 
     </div>
