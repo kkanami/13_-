@@ -6,7 +6,7 @@
 ・確認画面のパスワード、echo ●●●●でいい？
 ・ハッシュ化OKっぽい
 ・入力チェックボタン
-常にでちゃってる。ボタン押したらの条件付け必要
+
 
 
 ■前提条件
@@ -127,3 +127,96 @@ D.Iブログのナビゲーションバーに「アカウント登録」を追�
 
 
 https://spring.pleiades.io/guides/gs/validating-form-input
+         function check2() {
+            if (form.last_name.value == "") {
+                document.getElementById("last_name_msg").innerHTML = "名前（名）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check3() {
+            if (form.family_name_kana.value == "") {
+                document.getElementById("family_name_kana_msg").innerHTML = "カナ（姓）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check4() {
+            if (form.last_name_kana.value == "") {
+                document.getElementById("last_name_kana_msg").innerHTML = "カナ（名）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check5() {
+            if (form.mail.value == "") {
+                document.getElementById("mail_msg").innerHTML = "メールアドレスを入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check6() {
+            if (form.password.value == "") {
+                document.getElementById("password_msg").innerHTML = "パスワードを入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check7() {
+            if (form.postal_code.value == "") {
+                document.getElementById("postal_code_msg").innerHTML = "郵便番号を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check8() {
+                  var box_prefecture=document.getElementById("prefecture");
+                  var selected_prefecture=box_prefecture.selectedIndex;
+            if (selected_prefecture == 0) {
+                document.getElementById("prefecture_msg").innerHTML = "住所（都道府県）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+          function check9() {
+            if (form.address_1.value == "") {
+                document.getElementById("address_1_msg").innerHTML = "住所（市区町村）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+          function check10() {
+            if (form.address_2.value == "") {
+                document.getElementById("address_2_msg").innerHTML = "住所（番地）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+               function check11() {
+                    var box_authority=document.getElementById("authority");
+                  var selected_authority=box_prefecture.selectedIndex;
+            if (selected_authority == 0) {
+                document.getElementById("authority_msg").innerHTML = "アカウント権限を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }

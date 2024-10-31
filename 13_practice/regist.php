@@ -8,8 +8,19 @@
 
     <script type="text/javascript">
         function check() {
+
+
             if (form.family_name.value == "") {
-                alert("名前（姓）が未入力です。");
+                document.getElementById("family_name_msg").innerHTML = "名前（姓）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check2() {
+            if (form.last_name.value == "") {
+                document.getElementById("last_name_msg").innerHTML = "名前（名）を入力してください。";
                 return false;
             } else {
                 return true;
@@ -24,45 +35,50 @@
 
 <body>
     <h1>アカウント登録</h1>
-    <form method="post" class="main" action="regist_confirm.php" 　name="form" id="form" onsubmit="return check()">
+    <form method="post" class="main" action="regist_confirm.php" 　name="form" id="form" onsubmit="return (check() && check2())">
 
         <div>
             <label>名前（姓）</label>
             <br>
             <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" id="family_name" name="family_name" value="<?php if(!empty($_POST['family_name'])){echo $_POST['family_name'];}?>">
             <br>
-
         </div>
+        <p id="family_name_msg"></p>
 
         <div>
             <label>名前（名）</label>
             <br>
-            <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" name="last_name" value="<?php if(!empty($_POST['last_name'])){echo $_POST['last_name'];}?>">
+            <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" id="last_name" name="last_name" value="<?php if(!empty($_POST['last_name'])){echo $_POST['last_name'];}?>">
         </div>
+        <p id="last_name_msg"></p>
 
         <div>
             <label>カナ（姓）</label>
             <br>
-            <input type="text" pattern="[\u30A1-\u30F6]*" class="text" size="35" maxlength="10" name="family_name_kana" value="<?php if(!empty($_POST['family_name_kana'])){echo $_POST['family_name_kana'];}?>">
+            <input type="text" pattern="[\u30A1-\u30F6]*" class="text" size="35" maxlength="10" id="family_name_kana" name="family_name_kana" value="<?php if(!empty($_POST['family_name_kana'])){echo $_POST['family_name_kana'];}?>">
         </div>
+        <p id="family_name_kana_msg"></p>
 
         <div>
             <label>カナ（名）</label>
             <br>
-            <input type="text" pattern="[\u30A1-\u30F6]*" 　inputmode="katakana" class="text" size="35" maxlength="10" name="last_name_kana" value="<?php if(!empty($_POST['last_name_kana'])){echo $_POST['last_name_kana'];}?>">
+            <input type="text" pattern="[\u30A1-\u30F6]*" 　inputmode="katakana" class="text" size="35" maxlength="10" id="last_name_kana" name="last_name_kana" value="<?php if(!empty($_POST['last_name_kana'])){echo $_POST['last_name_kana'];}?>">
         </div>
+        <p id="last_name_kana_msg"></p>
 
         <div>
             <label>メールアドレス</label>
             <br>
-            <input type="email" class="text" size="100" maxlength="100" name="mail" value="<?php if(!empty($_POST['mail'])){echo $_POST['mail'];}?>">
+            <input type="email" class="text" size="100" maxlength="100" id="mail" name="mail" value="<?php if(!empty($_POST['mail'])){echo $_POST['mail'];}?>">
         </div>
+        <p id="email_msg"></p>
 
         <div>
             <label>パスワード</label>
             <br>
-            <input type="password" class="text" size="35" maxlength="10" name="password" value="<?php if(!empty($_POST['password'])){echo $_POST['password'];}?>">
+            <input type="password" class="text" size="35" maxlength="10" id="password" name="password" value="<?php if(!empty($_POST['password'])){echo $_POST['password'];}?>">
         </div>
+        <p id="password_msg"></p>
 
         <div>
             <label>性別</label>
@@ -74,18 +90,20 @@
             <label for="1">女</label>
         </div>
 
+
         <div>
             <label>郵便番号</label>
             <br>
-            <input type="number" class="text" size="35" maxlength="7" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
+            <input type="number" class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
         </div>
+        <p id="postal_code_msg"></p>
 
 
         <div>
 
             <label>住所（都道府県）</label>
             <br>
-            <select class="dropdown" name="prefecture">
+            <select class="dropdown" id="prefecture" name="prefecture">
                 <option value=""></option>
                 <option value="北海道" data-pref-id="01">北海道</option>
                 <option value="青森県" data-pref-id="02">青森県</option>
@@ -135,44 +153,39 @@
                 <option value="鹿児島県" data-pref-id="46">鹿児島県</option>
                 <option value="沖縄県" data-pref-id="47">沖縄県</option>
             </select>
-
-
         </div>
+        <p id="prefecture_msg"></p>
 
         <div>
             <label>住所（市区町村）</label>
             <br>
-            <input type="text" class="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" size="35" maxlength="10" name="address_1" value="<?php if(!empty($_POST['address_1'])){echo $_POST['address_1'];}?>">
+            <input type="text" class="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" size="35" maxlength="10" id="address_1" name="address_1" value="<?php if(!empty($_POST['address_1'])){echo $_POST['address_1'];}?>">
         </div>
+        <p id="address_1_msg"></p>
 
         <div>
             <label>住所（番地）</label>
             <br>
-            <input type="text" class="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" size="100" maxlength="100" name="address_2" value="<?php if(!empty($_POST['address_2'])){echo $_POST['address_2'];}?>">
+            <input type="text" class="text" pattern="[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFF9F\u4E00-\u9FFF]*" size="100" maxlength="100" id="address_2" name="address_2" value="<?php if(!empty($_POST['address_2'])){echo $_POST['address_2'];}?>">
         </div>
+        <p id="address_2_msg"></p>
 
 
         <div>
             <label>アカウント権限</label>
             <br>
-            <select class="dropdown" name="authority">
+            <select class="dropdown" id="authority" name="authority">
                 <option value="">一般</option>
                 <option value="管理者" <?php if( !empty($_POST['authority']) && $_POST['age'] === "管理者" ){ echo 'selected'; } ?>>管理者</option>
             </select>
         </div>
+        <p id="authority_msg"></p>
+
         <div>
-            <!--         エラーチェック未実装  -->
-
             <input type="submit" class="submit" value="確認する">
-
-
-
         </div>
+
     </form>
-
-
-
-
 
 
     <br>
