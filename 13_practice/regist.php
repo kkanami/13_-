@@ -26,6 +26,87 @@
                 return true;
             }
         }
+        
+            function check3() {
+            if (form.family_name_kana.value == "") {
+                document.getElementById("family_name_kana_msg").innerHTML = "カナ（姓）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+           function check4() {
+            if (form.last_name_kana.value == "") {
+                document.getElementById("last_name_kana_msg").innerHTML = "カナ（名）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check5() {
+            if (form.mail.value == "") {
+                document.getElementById("mail_msg").innerHTML = "メールアドレスを入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check6() {
+            if (form.password.value == "") {
+                document.getElementById("password_msg").innerHTML = "パスワードを入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check7() {
+            if (form.postal_code.value == "") {
+                document.getElementById("postal_code_msg").innerHTML = "郵便番号を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+              function check8() {
+            if (form.prefecture.value == "") {
+                document.getElementById("prefecture_msg").innerHTML = "住所（都道府県）を選択してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+          function check9() {
+            if (form.address_1.value == "") {
+                document.getElementById("address_1_msg").innerHTML = "住所（市区町村）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+          function check10() {
+            if (form.address_2.value == "") {
+                document.getElementById("address_2_msg").innerHTML = "住所（番地）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+        
+               function check11() {
+            if (form.authority.value == "") {
+                document.getElementById("authority_msg").innerHTML = "アカウント権限を選択してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
 
     </script>
 
@@ -35,7 +116,7 @@
 
 <body>
     <h1>アカウント登録</h1>
-    <form method="post" class="main" action="regist_confirm.php" 　name="form" id="form" onsubmit="return (check() && check2())">
+    <form method="post" class="main" action="regist_confirm.php" 　name="form" id="form" onsubmit="return !! (check() & check2() & check3()& check4()& check5()& check6()& check7()& check8()& check9()& check10()& check10())">
 
         <div>
             <label>名前（姓）</label>
@@ -71,7 +152,7 @@
             <br>
             <input type="email" class="text" size="100" maxlength="100" id="mail" name="mail" value="<?php if(!empty($_POST['mail'])){echo $_POST['mail'];}?>">
         </div>
-        <p id="email_msg"></p>
+        <p id="mail_msg"></p>
 
         <div>
             <label>パスワード</label>
@@ -94,7 +175,7 @@
         <div>
             <label>郵便番号</label>
             <br>
-            <input type="number" class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
+            <input type="text" pattern="[\uFF10-\uFF19]*"  class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
         </div>
         <p id="postal_code_msg"></p>
 
