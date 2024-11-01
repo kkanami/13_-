@@ -37,13 +37,13 @@
 
         <p>メールアドレス
             <br>
-            <?php if(!empty($_POST['mail'])){
-                echo "●●●●";} ?>
+            <?php echo $_POST['mail']; ?>
         </p>
 
         <p>パスワード
             <br>
-            <?php echo $_POST['password']; ?>
+            <?php if(!empty($_POST['password'])){
+                echo "●●●●";} ?>
         </p>
 
 
