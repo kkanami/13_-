@@ -1,6 +1,3 @@
-
-
-
 <!doctype html>
 <html lang="ja">
 
@@ -40,7 +37,8 @@
 
         <p>メールアドレス
             <br>
-            <?php echo $_POST['mail']; ?>
+            <?php if(!empty($_POST['mail'])){
+                echo "●●●●";} ?>
         </p>
 
         <p>パスワード
@@ -48,7 +46,7 @@
             <?php echo $_POST['password']; ?>
         </p>
 
-        <!--数字になっちゃう-->
+
         <p>性別
             <br>
             <?php
@@ -64,7 +62,7 @@
             <?php echo $_POST['postal_code']; ?>
         </p>
 
-        <!--数字になっちゃう-->
+
         <p>住所（都道府県）
             <br>
             <?php 

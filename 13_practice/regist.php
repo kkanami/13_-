@@ -175,7 +175,7 @@
         <div>
             <label>郵便番号</label>
             <br>
-            <input type="text" pattern="[\uFF10-\uFF19]*"  class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
+            <input type="text" pattern="[/^[0-9]*$/]*"  class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php if(!empty($_POST['postal_code'])){echo $_POST['postal_code'];}?>">
         </div>
         <p id="postal_code_msg"></p>
 
