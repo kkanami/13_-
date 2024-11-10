@@ -82,7 +82,12 @@
 
         <p>アカウント権限
             <br>
-            <?php echo $_POST['authority']; ?>
+            <?php
+            $option=['0'=>'一般',
+                    '1'=>'管理者'];
+            $authority=$_POST['authority'] ;
+            $authoritydisp=$option[$_POST['authority']];
+            echo $authoritydisp ?>
         </p>
 
         <!--以下は、regist.htmlから引き渡されたpostをここで再度箱に格納し、complete.phpに引き渡す。type=hiddenにすることで非表示となる。-->

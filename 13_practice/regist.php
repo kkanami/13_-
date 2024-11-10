@@ -164,10 +164,10 @@
         <div>
             <label>性別</label>
             <br>
-            <input type="radio" id="0" name="gender" value="0" id="0" checked />
+            <input type="radio" id="0" name="gender" value="0"  <?php if(empty($_POST['gender']) || $_POST['gender']=== "0" ){ echo 'checked';} ?>  />
             <label for="0">男</label>
 
-            <input type="radio" id="1" name="gender" value="1" id="1" <?php if($_POST['gender'] === "1" ){ echo 'checked'; } ?> />
+            <input type="radio" id="1" name="gender" value="1" <?php if(!empty($_POST['gender']) && $_POST['gender']=== "1" ){ echo 'checked';} ?> />
             <label for="1">女</label>
         </div>
 
@@ -256,8 +256,8 @@
             <label>アカウント権限</label>
             <br>
             <select class="dropdown" id="authority" name="authority">
-                <option value="">一般</option>
-                <option value="管理者" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "管理者" ){ echo 'selected'; } ?>>管理者</option>
+                <option value="0">一般</option>
+                <option value="1" <?php if( !empty($_POST['authority']) && $_POST['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
             </select>
         </div>
         <p id="authority_msg"></p>
