@@ -33,7 +33,7 @@
         //PDO
         mb_internal_encoding("utf8");
         $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
-        $stmt=$pdo->query("select*from login_user_transaction");
+        $stmt=$pdo->query("select*from login_user_transaction ORDER BY id DESC");
         ?>
         <div class="account">
             <table border="1">
@@ -49,7 +49,7 @@
                     <th>削除フラグ</th>
                     <th>登録日時</th>
                     <th>更新日時</th>
-                    <th>操作</th>
+                    <th colspan="2">操作</th>
 
                 </tr>
 
@@ -64,27 +64,48 @@
                 echo "<td>". $row['family_name_kana']."</td>";
                 echo "<td>". $row['last_name_kana']."</td>";
                 echo "<td>". $row['mail']."</td>";
-                echo "<td>". $row['authority']."</td>";
-                echo "<td>". $row['gender']."</td>";
-                echo "<td>". $row['delete_flag']."</td>";
+               
+                $option=['0'=>'男',
+                         '1'=>'女'];
+                    $gender=$row['gender'] ;
+                    $genderdisp=$option[$row['gender']];
+                echo "<td>".$genderdisp."</td>";
+        
+                $option=['0'=>'一般',
+                         '1'=>'管理者'];
+                    $authority=$row['authority'] ;
+                    $authoritydisp=$option[$row['authority']];
+                echo "<td>". $authoritydisp."</td>";
+        
+                $option=['0'=>'有効',
+                        '1'=>'無効',
+                        ''=>''];
+                    $delete=$row['delete_flag'] ;
+                    $deletedisp=$option[$row['delete_flag']];
+                echo "<td>".$deletedisp."</td>";
+        
                 echo "<td>". $row['registered_time']."</td>";
                 echo "<td>". $row['update_time']."</td>";
+                echo "<td>";
+        
+                echo '<form class="back" action="update.php">';
+                echo'<input type="submit" class="back" value="更新">';
+                echo"</form>";
+                echo"</td>";
 
+                echo "<td>";
+                echo '<form class="back" action="delete.php">';
+                echo'<input type="submit" class="back" value="削除">';
+                echo"</form>";
+                echo"</td>";
+                echo" </tr>";
             }
-                
+               
               ?>
-                <td>
-                    <form class="back" action="update.php">
-                        <input type="submit" class="back" value="更新">
-                    </form>
-                </td>
+       
 
-                <td>
-                    <form class="back" action="delete.php">
-                        <input type="submit" class="back" value="削除">
-                    </form>
-                </td>
-                </tr>
+        
+               
             </table>
         </div>
 
