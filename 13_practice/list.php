@@ -26,42 +26,68 @@
 
     <main>
         <h1>アカウント一覧画面</h1>
+
+
+
         <?php
         //PDO
         mb_internal_encoding("utf8");
         $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
         $stmt=$pdo->query("select*from login_user_transaction");
         ?>
+        <div class="account">
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>名前（姓）</th>
+                    <th>名前（名）</th>
+                    <th>カナ（姓）</th>
+                    <th>カナ（名）</th>
+                    <th>メールアドレス</th>
+                    <th>性別</th>
+                    <th>アカウント権限</th>
+                    <th>削除フラグ</th>
+                    <th>登録日時</th>
+                    <th>更新日時</th>
+                    <th>操作</th>
 
-        <?php
+                </tr>
+
+                <?php
          //投稿を表示させるrow…行 stmt…statementの略。声明 fetch…取ってくる
     while($row=$stmt->fetch()){
-             echo'<div class="account">';
-        
-//               echo"<h3>".$row['title']."</h3>";
-                echo $row['id'];
-                echo $row['family_name'];
-                echo $row['last_name'];
-                echo $row['family_name_kana'];
-                echo $row['last_name_kana'];
-                echo $row['mail'];
-                echo $row['authority'];
-                echo $row['gender'];
-                echo $row['delete_flag'];
-                echo $row['registered_time'];
-                echo $row['update_time'];
-        
-                echo"</div>";
-            }
-              ?>
+                
+                echo "<tr>";
+                echo "<td>". $row['id']."</td>";
+                echo "<td>". $row['family_name']."</td>";
+                echo "<td>". $row['last_name']."</td>";
+                echo "<td>". $row['family_name_kana']."</td>";
+                echo "<td>". $row['last_name_kana']."</td>";
+                echo "<td>". $row['mail']."</td>";
+                echo "<td>". $row['authority']."</td>";
+                echo "<td>". $row['gender']."</td>";
+                echo "<td>". $row['delete_flag']."</td>";
+                echo "<td>". $row['registered_time']."</td>";
+                echo "<td>". $row['update_time']."</td>";
 
-        <form class="back" action="update.php">
-            <input type="submit" class="back" value="更新">
-        </form>
-        
-        <form class="back" action="delete.php">
-            <input type="submit" class="back" value="削除">
-        </form>
+            }
+                
+              ?>
+                <td>
+                    <form class="back" action="update.php">
+                        <input type="submit" class="back" value="更新">
+                    </form>
+                </td>
+
+                <td>
+                    <form class="back" action="delete.php">
+                        <input type="submit" class="back" value="削除">
+                    </form>
+                </td>
+                </tr>
+            </table>
+        </div>
+
 
 
     </main>
