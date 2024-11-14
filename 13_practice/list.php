@@ -85,8 +85,18 @@
                 echo "<td>".$deletedisp."</td>";
         
                 $regist=$row['registered_time'];
-                echo "<td>". date('Y/m/d', strtotime($regist))."</td>";
-                echo "<td>". $row['update_time']."</td>";
+               if(empty($row['registered_time'])){
+                   echo "<td>".''."</td>" ; 
+               } else if   (!empty($row['registered_time'])){ 
+                    echo "<td>". date('Y/m/d', strtotime($regist))."</td>";
+               }
+        
+                $update=$row['update_time'];
+              if(empty($row['update_time'])){
+                   echo "<td>".''."</td>" ; 
+               } else if   (!empty($row['update_time'])){ 
+                    echo "<td>". date('Y/m/d', strtotime($update))."</td>";
+               }
                 echo "<td>";
         
                 echo '<form class="back" action="update.php">';
