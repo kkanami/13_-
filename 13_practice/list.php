@@ -84,7 +84,8 @@
                     $deletedisp=$option[$row['delete_flag']];
                 echo "<td>".$deletedisp."</td>";
         
-                echo "<td>". $row['registered_time']."</td>";
+                $regist=$row['registered_time'];
+                echo "<td>". date('Y/m/d', strtotime($regist))."</td>";
                 echo "<td>". $row['update_time']."</td>";
                 echo "<td>";
         
