@@ -3,7 +3,7 @@ header img {
     padding: 0px;
 }
 
-.content ul{
+.content ul {
     height: 40px;
     background-color: black;
     margin-bottom: 10px;
@@ -17,10 +17,10 @@ header img {
     color: white;
     padding-right: 30px;
     line-height: 40px;
-    
+
 }
 
-.menu li a{
+.menu li a {
     text-decoration: none;
     color: white;
 }
@@ -44,7 +44,7 @@ h1 {
 
 }
 
-.ymd{
+.ymd {
     font-size: 20px;
 }
 
@@ -72,6 +72,7 @@ h1 {
     width: 180px;
     padding: 10px 5px;
 }
+
 .main_menu p {
     font-size: 15px;
     padding: 0px;
@@ -115,21 +116,45 @@ h3 {
     padding-left: 25px;
 }
 
-.right ul li{
+.right ul li {
     list-style-type: none;
 }
 
-.right ul li a{
+.right ul li a {
     text-decoration: none;
     color: black;
     border: none;
 }
 
-.account table{
+.account table {
     width: 100%;
 }
 
-footer{
+table {
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 450px;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 60px;
+}
+
+.button {
+    padding-top: 10px;
+    text-align: center;
+}
+
+span {
+    font-size: 25px;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+
+
+footer {
     width: 100%;
     height: 60px;
     background-color: black;
@@ -139,4 +164,3 @@ footer{
     font-size: 20px;
     margin-top: 10px;
 }
-

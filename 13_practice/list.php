@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>アカウント一覧画</title>
+    <title>アカウント一覧画面</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -12,7 +12,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                <li>トップ</li>
+                 <li><a href="index.html">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -58,7 +58,9 @@
     while($row=$stmt->fetch()){
                 
                 echo "<tr>";
-                echo "<td>". $row['id']."</td>";
+        $result= $row['id'];
+                echo "<td>".$result."</td>";
+        
                 echo "<td>". $row['family_name']."</td>";
                 echo "<td>". $row['last_name']."</td>";
                 echo "<td>". $row['family_name_kana']."</td>";
@@ -97,16 +99,19 @@
                } else if   (!empty($row['update_time'])){ 
                     echo "<td>". date('Y/m/d', strtotime($update))."</td>";
                }
-                echo "<td>";
         
-                echo '<form class="back" action="update.php">';
+                echo "<td>";
+                echo '<form method="post" class="back" action="update.php" >';
+                echo"<input type='hidden' value={$result} name='resultid1' id='resultid1'>";
                 echo'<input type="submit" class="back" value="更新">';
                 echo"</form>";
                 echo"</td>";
 
                 echo "<td>";
-                echo '<form class="back" action="delete.php">';
-                echo'<input type="submit" class="back" value="削除">';
+                echo '<form  method="post" class="back" action="delete.php">';
+                echo"<input type='hidden' value={$result} name='resultid2' id='resultid2'>";
+                echo"<input type='submit' class='back' value='削除'>";
+ 
                 echo"</form>";
                 echo"</td>";
                 echo" </tr>";
