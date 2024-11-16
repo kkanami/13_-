@@ -4,6 +4,107 @@
 <head>
     <meta charset="utf-8">
     <title>アカウント更新画面</title>
+    <script type="text/javascript">
+        function check() {
+            if (form.family_name.value == "") {
+                document.getElementById("family_name_msg").innerHTML = "名前（姓）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check2() {
+            if (form.last_name.value == "") {
+                document.getElementById("last_name_msg").innerHTML = "名前（名）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check3() {
+            if (form.family_name_kana.value == "") {
+                document.getElementById("family_name_kana_msg").innerHTML = "カナ（姓）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check4() {
+            if (form.last_name_kana.value == "") {
+                document.getElementById("last_name_kana_msg").innerHTML = "カナ（名）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check5() {
+            if (form.mail.value == "") {
+                document.getElementById("mail_msg").innerHTML = "メールアドレスを入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check6() {
+            if (form.password.value == "") {
+                document.getElementById("password_msg").innerHTML = "パスワードを入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check7() {
+            if (form.postal_code.value == "") {
+                document.getElementById("postal_code_msg").innerHTML = "郵便番号を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check8() {
+            if (form.prefecture.value == "") {
+                document.getElementById("prefecture_msg").innerHTML = "住所（都道府県）を選択してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check9() {
+            if (form.address_1.value == "") {
+                document.getElementById("address_1_msg").innerHTML = "住所（市区町村）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check10() {
+            if (form.address_2.value == "") {
+                document.getElementById("address_2_msg").innerHTML = "住所（番地）を入力してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function check11() {
+            if (form.authority.value == "") {
+                document.getElementById("authority_msg").innerHTML = "アカウント権限を選択してください。";
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+    </script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -12,7 +113,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                 <li><a href="index.html">トップ</a></li>
+                <li><a href="index.html">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -34,7 +135,7 @@
         ?>
         <?php $row=$stmt->fetch() ?>
         <table>
-            <form method="post" class="main" action="update_confirm.php" 　name="form" id="form">
+            <form method="post" class="main" action="update_confirm.php" 　name="form" id="form" onsubmit="return !! (check() & check2() & check3()& check4()& check5()& check6()& check7()& check8()& check9()& check10()& check10())">
 
                 <div>
                     <label>名前（姓）</label>
@@ -42,50 +143,53 @@
                     <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" id="family_name" name="family_name" value="<?php echo $row['family_name'];?>">
                     <br>
                 </div>
-             
+                <p style="color:#FF0000" id="family_name_msg"></p>
+
 
                 <div>
                     <label>名前（名）</label>
                     <br>
                     <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" id="last_name" name="last_name" value="<?php echo $row['last_name'];?>">
                 </div>
-           
+                <p id="last_name_msg"></p>
+
 
                 <div>
                     <label>カナ（姓）</label>
                     <br>
                     <input type="text" pattern="[\u30A1-\u30F6]*" class="text" size="35" maxlength="10" id="family_name_kana" name="family_name_kana" value="<?php echo $row['family_name_kana'];?>">
                 </div>
-         
+                <p id="family_name_kana_msg"></p>
+
 
                 <div>
                     <label>カナ（名）</label>
                     <br>
                     <input type="text" pattern="[\u30A1-\u30F6]*" 　inputmode="katakana" class="text" size="35" maxlength="10" id="last_name_kana" name="last_name_kana" value="<?php echo $row['last_name_kana'];?>">
                 </div>
-              
+                <p id="last_name_kana_msg"></p>
 
                 <div>
                     <label>メールアドレス</label>
                     <br>
                     <input type="email" class="text" size="100" maxlength="100" id="mail" name="mail" value="<?php echo $row['mail'];?>">
                 </div>
-            
+                <p id="mail_msg"></p>
 
                 <div>
                     <label>パスワード</label>
                     <br>
                     <input type="password" pattern="^[0-9a-zA-Z]*$" class="text" size="35" maxlength="10" id="password" name="password" value="<?php echo $row['password'];?>">
                 </div>
-           
+                <p id="password_msg"></p>
 
                 <div>
                     <label>性別</label>
                     <br>
-                    <input type="radio" id="0" name="gender" value="0" <?php if($row['gender']=== "0" ){ echo 'checked';} ?> />
+                    <input type="radio" id="0" name="gender" value="0" <?php if($row['gender']== "0" ){ echo 'checked';} ?> />
                     <label for="0">男</label>
 
-                    <input type="radio" id="1" name="gender" value="1" <?php if($row['gender']=== "1" ){ echo 'checked';} ?> />
+                    <input type="radio" id="1" name="gender" value="1" <?php if($row['gender']== "1" ){ echo 'checked';} ?> />
                     <label for="1">女</label>
                 </div>
 
@@ -96,7 +200,7 @@
                     <input type="text" pattern="^[0-9]*$" class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php echo $row['postal_code'];?>">
                 </div>
                 <p id="postal_code_msg"></p>
-
+                <p id="postal_code_msg"></p>
 
                 <div>
 
@@ -153,21 +257,21 @@
                         <option value="沖縄県" data-pref-id="47" <?php if( $row['prefecture'] === "沖縄県" ){ echo 'selected'; } ?>>沖縄県</option>
                     </select>
                 </div>
-        
+                <p id="prefecture_msg"></p>
 
                 <div>
                     <label>住所（市区町村）</label>
                     <br>
                     <input type="text" class="text" pattern="^[　ー０-９ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠ー]*$" size="35" maxlength="10" id="address_1" name="address_1" value="<?php echo $row['address_1'];?>">
                 </div>
-          
+                <p id="address_1_msg"></p>
 
                 <div>
                     <label>住所（番地）</label>
                     <br>
                     <input type="text" class="text" pattern="^[　ー０-９ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠ー]*$" size="100" maxlength="100" id="address_2" name="address_2" value="<?php echo $row['address_2'];?>">
                 </div>
-           
+                <p id="address_2_msg"></p>
 
                 <div>
                     <label>アカウント権限</label>
@@ -177,9 +281,10 @@
                         <option value="1" <?php if($row['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
                     </select>
                 </div>
-           
+                <p id="authority_msg"></p>
 
                 <div>
+                    <input type='hidden' value='<?php echo $_POST["resultid1"];?>' name='resultid1' id='resultid1'>
                     <input type="submit" class="submit" value="確認する">
                 </div>
 

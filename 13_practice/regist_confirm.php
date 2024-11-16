@@ -43,7 +43,7 @@
         <p>パスワード
             <br>
             <?php if(!empty($_POST['password'])){
-                echo "●●●●";} ?>
+                echo "セキリュティのため表示できません";} ?>
         </p>
 
 

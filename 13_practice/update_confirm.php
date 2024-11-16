@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>アカウント削除画面</title>
+    <title>アカウント更新確認画面</title>
+    
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -12,7 +13,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                <li><a href="index.html">トップ</a></li>
+                 <li><a href="index.html">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -25,18 +26,15 @@
     </header>
 
     <main>
-        <h1>アカウント削除画面</h1>
-
-
-
+        <h1>アカウント更新確認画面</h1>
         <?php
         //PDO
         mb_internal_encoding("utf8");
         $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
-        $stmt=$pdo->query("select*from login_user_transaction where id = '".$_POST['resultid2']."'");
+        $stmt=$pdo->query("select*from login_user_transaction where id = '".$_POST['resultid1']."'");
         ?>
         <?php $row=$stmt->fetch() ?>
-        <table>
+         <table>
             <tr>
                 <th>名前（姓）
                 </th>
@@ -81,7 +79,7 @@
                 </th>
                 <td>
                     <?php if(!empty($row['password'])){
-                echo "セキリュティのため表示できません";} ?>
+                echo "●●●●";} ?>
                 </td>
             </tr>
 
@@ -147,10 +145,22 @@
 
         </table>
 
-        <form method="post" class="button" action="delete_confirm.php">
-            <input type='hidden' value='<?php echo $_POST["resultid2"];?>' name='resultid2' id='resultid2'>
-            <input type="submit" class="button" value="確認する">
-        </form>
+       <table>
+            <tr>
+                <td>
+                    <form action="update.php" method="post">
+                        <input type='hidden' value='<?php echo $_POST["resultid1"];?>' name='resultid1' id='resultid1'>
+                        <input type="submit" class="button1" value="前に戻る">
+                    </form>
+                </td>
+                <td>
+                    <form action="update_complete.php" method="post">
+                        <input type='hidden' value='<?php echo $_POST["resultid1"];?>' name='resultid1' id='resultid1'>
+                        <input type="submit" class="button1" value="更新する">
+                    </form>
+                </td>
+            </tr>
+        </table>
 
 
     </main>
