@@ -151,7 +151,7 @@
                     <br>
                     <input type="text" class="text" pattern="^[ぁ-ん一-龠ー]*$" size="35" maxlength="10" id="last_name" name="last_name" value="<?php echo $row['last_name'];?>">
                 </div>
-                <p id="last_name_msg"></p>
+                <p style="color:#FF0000" id="last_name_msg"></p>
 
 
                 <div>
@@ -159,7 +159,7 @@
                     <br>
                     <input type="text" pattern="[\u30A1-\u30F6]*" class="text" size="35" maxlength="10" id="family_name_kana" name="family_name_kana" value="<?php echo $row['family_name_kana'];?>">
                 </div>
-                <p id="family_name_kana_msg"></p>
+                <p style="color:#FF0000" id="family_name_kana_msg"></p>
 
 
                 <div>
@@ -167,21 +167,22 @@
                     <br>
                     <input type="text" pattern="[\u30A1-\u30F6]*" 　inputmode="katakana" class="text" size="35" maxlength="10" id="last_name_kana" name="last_name_kana" value="<?php echo $row['last_name_kana'];?>">
                 </div>
-                <p id="last_name_kana_msg"></p>
+                <p style="color:#FF0000" id="last_name_kana_msg"></p>
 
                 <div>
                     <label>メールアドレス</label>
                     <br>
                     <input type="email" class="text" size="100" maxlength="100" id="mail" name="mail" value="<?php echo $row['mail'];?>">
                 </div>
-                <p id="mail_msg"></p>
+                <p style="color:#FF0000" id="mail_msg"></p>
 
                 <div>
                     <label>パスワード</label>
                     <br>
-                    <input type="password" pattern="^[0-9a-zA-Z]*$" class="text" size="35" maxlength="10" id="password" name="password" value="<?php echo $row['password'];?>">
+                    <p>セキュリティのため表示できません。変更する場合のみ入力してください。</p>
+                    <input type="password" pattern="^[0-9a-zA-Z]*$" class="text" size="35" maxlength="10" id="password" name="password" value="">
                 </div>
-                <p id="password_msg"></p>
+                <p style="color:#FF0000" id="password_msg"></p>
 
                 <div>
                     <label>性別</label>
@@ -199,8 +200,8 @@
                     <br>
                     <input type="text" pattern="^[0-9]*$" class="text" size="35" maxlength="7" id="postal_code" name="postal_code" value="<?php echo $row['postal_code'];?>">
                 </div>
-                <p id="postal_code_msg"></p>
-                <p id="postal_code_msg"></p>
+                <p style="color:#FF0000" id="postal_code_msg"></p>
+               
 
                 <div>
 
@@ -257,21 +258,21 @@
                         <option value="沖縄県" data-pref-id="47" <?php if( $row['prefecture'] === "沖縄県" ){ echo 'selected'; } ?>>沖縄県</option>
                     </select>
                 </div>
-                <p id="prefecture_msg"></p>
+                <p style="color:#FF0000" id="prefecture_msg"></p>
 
                 <div>
                     <label>住所（市区町村）</label>
                     <br>
                     <input type="text" class="text" pattern="^[　ー０-９ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠ー]*$" size="35" maxlength="10" id="address_1" name="address_1" value="<?php echo $row['address_1'];?>">
                 </div>
-                <p id="address_1_msg"></p>
+                <p style="color:#FF0000" id="address_1_msg"></p>
 
                 <div>
                     <label>住所（番地）</label>
                     <br>
                     <input type="text" class="text" pattern="^[　ー０-９ぁ-んァ-ヶｱ-ﾝﾞﾟ一-龠ー]*$" size="100" maxlength="100" id="address_2" name="address_2" value="<?php echo $row['address_2'];?>">
                 </div>
-                <p id="address_2_msg"></p>
+                <p style="color:#FF0000" id="address_2_msg"></p>
 
                 <div>
                     <label>アカウント権限</label>
@@ -281,7 +282,7 @@
                         <option value="1" <?php if($row['authority'] === "1" ){ echo 'selected'; } ?>>管理者</option>
                     </select>
                 </div>
-                <p id="authority_msg"></p>
+                <p style="color:#FF0000" id="authority_msg"></p>
 
                 <div>
                     <input type='hidden' value='<?php echo $_POST["resultid1"];?>' name='resultid1' id='resultid1'>
