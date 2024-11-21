@@ -79,7 +79,7 @@
                 </th>
                 <td>
                     <?php if(!empty($_POST['password'])){
-                echo "セキュリティのため表示できません。";} ?>
+                echo "セキュリティのため表示できません。";}else{echo "パスワードは変更されません。";} ?>
                 </td>
             </tr>
 

@@ -135,7 +135,7 @@
         ?>
         <?php $row=$stmt->fetch() ?>
         <table>
-            <form method="post" class="main" action="update_confirm.php" 　name="form" id="form" onsubmit="return !! (check() & check2() & check3()& check4()& check5()& check6()& check7()& check8()& check9()& check10()& check10())">
+            <form method="post" class="main" action="update_confirm.php" 　name="form" id="form" onsubmit="return !! (check() & check2() & check3()& check4()& check5()& check7()& check8()& check9()& check10()& check10())">
 
                 <div>
                     <label>名前（姓）</label>

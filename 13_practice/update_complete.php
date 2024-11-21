@@ -36,12 +36,16 @@
         mb_internal_encoding("utf8");
         try{
         $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
-        $pdo->exec("update login_user_transaction set family_name='".$_POST['family_name']."' , last_name='".$_POST['last_name']."' , family_name_kana='".$_POST['family_name_kana']."' , last_name_kana='".$_POST['last_name_kana']."' , mail='".$_POST['mail']."' , password='".password_hash($_POST['password'],PASSWORD_DEFAULT)."' , gender='".$_POST['gender']."' , postal_code='".$_POST['postal_code']."' , prefecture='".$_POST['prefecture']."' , address_1='".$_POST['address_1']."' , address_2='".$_POST['address_2']."' , authority='".$_POST['authority']."' , update_time= now() where id = '".$_POST['resultid1']."'");
+        $pdo->exec("update login_user_transaction set family_name='".$_POST['family_name']."' , last_name='".$_POST['last_name']."' , family_name_kana='".$_POST['family_name_kana']."' , last_name_kana='".$_POST['last_name_kana']."' , mail='".$_POST['mail']."' , gender='".$_POST['gender']."' , postal_code='".$_POST['postal_code']."' , prefecture='".$_POST['prefecture']."' , address_1='".$_POST['address_1']."' , address_2='".$_POST['address_2']."' , authority='".$_POST['authority']."' , update_time= now() where id = '".$_POST['resultid1']."'");
+            
+        if(!empty($_POST['password'])){$pdo->exec("update login_user_transaction set password='".password_hash($_POST['password'],PASSWORD_DEFAULT)."', update_time= now() where id = '".$_POST['resultid1']."'");}
+        
         }catch(Exception $e){
 	   echo '<span style="color:#FF0000">エラーが発生したためアカウント更新できません。</span>' . $e->getMessage();
        
 	   exit();
         }    
+        
         ?>
         
        <div class="confirm">
