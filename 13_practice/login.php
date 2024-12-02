@@ -7,7 +7,6 @@
     <title>ログイン画面</title>
         <script type="text/javascript">
 
-
         function check5() {
             if (form.mail.value == "") {
                 document.getElementById("mail_msg").innerHTML = "メールアドレスを入力してください。";
@@ -25,7 +24,6 @@
                 return true;
             }
         }
-
     
     </script>
     <link rel="stylesheet" type="text/css" href="style.css">

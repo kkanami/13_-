@@ -8,13 +8,14 @@ try{
     $stmt=$pdo->query("select*from login_user_transaction where mail = '".$_POST['mail']."'");
     $row=$stmt->fetch();
       //hash化したパスを認証する  
-if(password_verify($_POST['password'], $row['password'])){
-    $_SESSION['user']=$row['authority'];
-    echo "<span>ログイン認証に成功しました</span>";
-    }else {
-    header("Location:login.php");
-        }
-    
+
+        if($row['delete_flag']==0 && password_verify($_POST['password'], $row['password'])){
+            $_SESSION['user']=$row['authority'];
+            echo "<span>ログイン認証に成功しました</span>";
+            }else {
+            header("Location:login.php");
+            }
+        
     }catch(Exception $e){
         echo '<span style="color:#FF0000">エラーが発生したためログイン情報を取得できません。</span>：';
         echo $e->getMessage();
