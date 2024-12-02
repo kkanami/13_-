@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    if($_SESSION['user']==0){
+        echo "ログインしてください";
+        echo' <form action="login.php">
+                    <input type="submit" class="button1" value="ログイン">
+                </form>';
+    exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="ja">
 
@@ -7,8 +19,6 @@
     <title>アカウント登録画面</title>
 
     <script type="text/javascript">
-
-
         function check() {
             if (form.family_name.value == "") {
                 document.getElementById("family_name_msg").innerHTML = "名前（姓）を入力してください。";
@@ -164,7 +174,7 @@
         <div>
             <label>性別</label>
             <br>
-            <input type="radio" id="0" name="gender" value="0"  <?php if(empty($_POST['gender']) || $_POST['gender']=== "0" ){ echo 'checked';} ?>  />
+            <input type="radio" id="0" name="gender" value="0" <?php if(empty($_POST['gender']) || $_POST['gender']=== "0" ){ echo 'checked';} ?> />
             <label for="0">男</label>
 
             <input type="radio" id="1" name="gender" value="1" <?php if(!empty($_POST['gender']) && $_POST['gender']=== "1" ){ echo 'checked';} ?> />

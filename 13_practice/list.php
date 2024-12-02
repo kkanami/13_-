@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    if($_SESSION['user']==0){
+        echo "ログインしてください";
+        echo' <form action="login.php">
+                    <input type="submit" class="button1" value="ログイン">
+                </form>';
+    exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="ja">
 
@@ -66,6 +78,7 @@
                 echo "<td>". $row['family_name_kana']."</td>";
                 echo "<td>". $row['last_name_kana']."</td>";
                 echo "<td>". $row['mail']."</td>";
+    
                
                 $option=['0'=>'男',
                          '1'=>'女'];

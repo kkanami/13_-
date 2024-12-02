@@ -1,3 +1,40 @@
+<?php
+//文字化け防止
+mb_internal_encoding("utf8");
+session_start();
+//DB接続
+try{
+    $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
+    $stmt=$pdo->query("select*from login_user_transaction where mail = '".$_POST['mail']."'");
+    $row=$stmt->fetch();
+      //hash化したパスを認証する  
+if(password_verify($_POST['password'], $row['password'])){
+    $_SESSION['user']=$row['authority'];
+    echo "<span>ログイン認証に成功しました</span>";
+    }else {
+    header("Location:login.php");
+        }
+    
+    }catch(Exception $e){
+        echo '<span style="color:#FF0000">エラーが発生したためログイン情報を取得できません。</span>：';
+        echo $e->getMessage();
+        exit();
+}
+
+if(!isset($_SESSION['user'])){
+    header("Location:login.php");
+    exit();
+}
+
+if($_SESSION['user']==1){
+    $reg='<a href="regist.php">アカウント登録</a>';
+    $li='<a href="list.php">アカウント一覧</a>';
+}else {
+    $reg = '';
+    $li = '';
+}
+?>
+
 <!doctype html>
 <html lang="ja">
 
@@ -12,14 +49,14 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                <li>トップ</li>
+                <li><a href="index.index">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
                 <li>問い合わせ</li>
                 <li>その他</li>
-                <li> <a href="regist.php">アカウント登録</a></li>
-                <li> <a href="list.php">アカウント一覧</a></li>
+                <li> <?php echo $reg; ?></li>
+                <li> <?php echo $li; ?></li>
             </ul>
         </div>
     </header>
@@ -104,4 +141,6 @@
     <footer>
         Copyright D.I.works| D.I.blog is the one which provides A to Z about programming
     </footer>
-</body></html>
+</body>
+
+</html>

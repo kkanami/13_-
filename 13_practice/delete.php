@@ -1,3 +1,15 @@
+<?php
+    session_start();
+    if($_SESSION['user']==0){
+        echo "ログインしてください";
+        echo' <form action="login.php">
+                    <input type="submit" class="button1" value="ログイン">
+                </form>';
+    exit();
+}
+?>
+
+
 <!doctype html>
 <html lang="ja">
 
@@ -12,7 +24,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                <li><a href="index.html">トップ</a></li>
+                <li><a href="index.php">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
