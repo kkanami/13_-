@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>アカウント更新完了画面</title>
-    
+
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -13,7 +13,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                 <li><a href="index.php">トップ</a></li>
+                <li><a href="index.php">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -21,17 +21,19 @@
                 <li>その他</li>
                 <li> <a href="regist.php">アカウント登録</a></li>
                 <li> <a href="list.php">アカウント一覧</a></li>
+                <li><a href="login.php">ログイン</a></li>
+                <li><a href="logout.php">ログアウト</a></li>
             </ul>
         </div>
     </header>
-    
-    
-    
+
+
+
 
     <main>
         <h1>アカウント更新完了画面</h1>
-        
-     <?php
+
+        <?php
         //PDO
         mb_internal_encoding("utf8");
         try{
@@ -47,15 +49,15 @@
         }    
         
         ?>
-        
-       <div class="confirm">
-                <p><span>更新完了しました</span></p>
-                <form action="index.html">
-                    <input type="submit" class="button1" value="TOPページへ戻る">
-                </form>
-            </div>
 
-     
+        <div class="confirm">
+            <p><span>更新完了しました</span></p>
+            <form action="index.php">
+                <input type="submit" class="button1" value="TOPページへ戻る">
+            </form>
+        </div>
+
+
 
 
     </main>

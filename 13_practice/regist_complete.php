@@ -23,7 +23,7 @@ values('".$_POST['family_name']."','".$_POST['last_name']."','".$_POST['family_n
         <h1>アカウント登録</h1>
         <div class="confirm">
             <p><span>登録完了しました</span></p>
-             <form action="index.html">
+             <form action="index.php">
            <input type="submit" class="button1" value="TOPページへ戻る">
        </form>
         </div>

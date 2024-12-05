@@ -1,10 +1,15 @@
 <?php
     session_start();
-    if($_SESSION['user']==0){
+    if(!isset($_SESSION['user'])){
         echo "ログインしてください";
         echo' <form action="login.php">
                     <input type="submit" class="button1" value="ログイン">
                 </form>';
+    exit();
+}
+
+if($_SESSION['user']==0){
+   echo "権限がありません";
     exit();
 }
 ?>
@@ -281,7 +286,7 @@
 
     <br>
 
-    <form class="back" action="index.html">
+    <form class="back" action="index.php">
         <input type="submit" class="back" value="TOPページへ戻る">
     </form>
 

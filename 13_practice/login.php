@@ -1,12 +1,10 @@
-
 <!doctype html>
 <html lang="ja">
 
 <head>
     <meta charset="utf-8">
     <title>ログイン画面</title>
-        <script type="text/javascript">
-
+    <script type="text/javascript">
         function check5() {
             if (form.mail.value == "") {
                 document.getElementById("mail_msg").innerHTML = "メールアドレスを入力してください。";
@@ -24,7 +22,7 @@
                 return true;
             }
         }
-    
+
     </script>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -34,7 +32,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                 <li><a href="index.php">トップ</a></li>
+                <li><a href="index.php">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -42,6 +40,8 @@
                 <li>その他</li>
                 <li> <a href="regist.php">アカウント登録</a></li>
                 <li> <a href="list.php">アカウント一覧</a></li>
+                <li><a href="login.php">ログイン</a></li>
+                <li><a href="logout.php">ログアウト</a></li>
             </ul>
         </div>
     </header>
@@ -66,7 +66,7 @@
                 </div>
                 <p style="color:#FF0000" id="password_msg"></p>
 
-              
+
 
                 <div>
                     <input type="submit" class="submit" value="ログイン">

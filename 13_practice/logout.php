@@ -1,9 +1,15 @@
+<?php
+session_start();
+$_SESSION = array();//セッションの中身をすべて削除
+session_destroy();//セッションを破壊
+?>
 <!doctype html>
 <html lang="ja">
 
 <head>
     <meta charset="utf-8">
-    <title>アカウント削除完了画面</title>
+    <title>ログアウト画面</title>
+
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
@@ -26,29 +32,20 @@
         </div>
     </header>
 
+
+
+
     <main>
-        <h1>アカウント削除完了画面</h1>
+        <h1>ログアウト画面</h1>
 
 
-        <?php
-        //PDO
-        mb_internal_encoding("utf8");
-        try{
-        $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
-        $pdo->exec("update login_user_transaction set delete_flag=1 , update_time= now() where id = '".$_POST['resultid2']."'");
-        }catch(Exception $e){
-	   echo '<span style="color:#FF0000">エラーが発生したためアカウント削除できません。</span>';
-
-	   exit();
-        }    
-        ?>
 
         <div class="confirm">
-            <p><span>削除完了しました</span></p>
-            <form action="index.html">
-                <input type="submit" class="button1" value="TOPページへ戻る">
-            </form>
+            <p><span>ログアウトしました</span></p>
         </div>
+
+
+
 
     </main>
 

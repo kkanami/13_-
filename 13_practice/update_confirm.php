@@ -21,6 +21,8 @@
                 <li>その他</li>
                 <li> <a href="regist.php">アカウント登録</a></li>
                 <li> <a href="list.php">アカウント一覧</a></li>
+                  <li><a href="login.php">ログイン</a></li>
+                <li><a href="logout.php">ログアウト</a></li>
             </ul>
         </div>
     </header>

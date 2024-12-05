@@ -1,13 +1,19 @@
 <?php
     session_start();
-    if($_SESSION['user']==0){
+    if(!isset($_SESSION['user'])){
         echo "ログインしてください";
         echo' <form action="login.php">
                     <input type="submit" class="button1" value="ログイン">
                 </form>';
     exit();
 }
+
+if($_SESSION['user']==0){
+   echo "権限がありません";
+    exit();
+}
 ?>
+
 
 
 <!doctype html>
@@ -24,7 +30,7 @@
         <img src="img/diblog_logo.jpg">
         <div class="content">
             <ul class="menu">
-                 <li><a href="index.html">トップ</a></li>
+                <li><a href="index.php">トップ</a></li>
                 <li>プロフィール</li>
                 <li>D.I.Blogについて</li>
                 <li>登録フォーム</li>
@@ -32,21 +38,60 @@
                 <li>その他</li>
                 <li> <a href="regist.php">アカウント登録</a></li>
                 <li> <a href="list.php">アカウント一覧</a></li>
+                <li><a href="login.php">ログイン</a></li>
+                <li><a href="logout.php">ログアウト</a></li>
             </ul>
         </div>
     </header>
 
     <main>
         <h1>アカウント一覧画面</h1>
+   
+            <table border="1">
+
+                <form method="post" class="search" action="#">
+
+                    <tr>
+                        <th>名前（姓）</th>
+                        <td><input type="text" class="text" id="family_name" name="family_name" value=""></td>
+                        <th>名前（名）</th>
+                        <td><input type="text" class="text" id="last_name" name="last_name" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>カナ（姓）</th>
+                        <td> <input type="text" id="family_name_kana" name="family_name_kana" value=""></td>
+                        <th>カナ（名）</th>
+                        <td><input type="text" class="text" id="last_name_kana" name="last_name_kana" value=""></td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td> <input type="email" class="text" id="mail" name="mail" value=""></td>
+                        <th>性別</th>
+                        <td> <input type="radio" id="0" name="gender" value="0" checked>
+                            <label for="0">男</label>
+                            <input type="radio" id="1" name="gender" value="1">
+                            <label for="1">女</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>アカウント権限</th>
+                        <td> <select class="dropdown" id="authority" name="authority">
+                                <option value="0">一般</option>
+                                <option value="1">管理者</option>
+                            </select></td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" class="search_submit" value="検索" ></td>
+                    </tr>
+                </form>
+         
+            </table>
+
+        
 
 
-
-        <?php
-        //PDO
-        mb_internal_encoding("utf8");
-        $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
-        $stmt=$pdo->query("select*from login_user_transaction ORDER BY id DESC");
-        ?>
+    
         <div class="account">
             <table border="1">
                 <tr>
@@ -62,12 +107,37 @@
                     <th>登録日時</th>
                     <th>更新日時</th>
                     <th colspan="2">操作</th>
-
                 </tr>
 
-                <?php
+
+
+
+
+        <?php
+        mb_internal_encoding("utf8");
+        $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
+        $stmt = $pdo->prepare("select*from login_user_transaction where family_name =? and last_name=? and family_name_kana=? and last_name_kana=? and mail=?" );
+        $family_name=$_POST['family_name'];
+        $last_name=$_POST['last_name'];
+        $family_name_kana=$_POST['family_name_kana'];
+        $last_name_kana=$_POST['last_name_kana'];
+        $mail=$_POST['mail'];
+        
+            
+        $stmt->bindValue(1,$family_name);
+        $stmt->bindValue(2,$last_name);
+        $stmt->bindValue(3,$family_name_kana);
+        $stmt->bindValue(4,$last_name_kana);
+        $stmt->bindValue(5,$mail);
+        
+
+           $stmt->execute();
+                $result1=$stmt->fetchALL();
+                print_r($result1);
+   
+                
          //投稿を表示させるrow…行 stmt…statementの略。声明 fetch…取ってくる
-    while($row=$stmt->fetch()){
+    while($row=$stmt->fetchALL()){
                 
                 echo "<tr>";
         $result= $row['id'];
@@ -131,10 +201,10 @@
             }
                
               ?>
-       
 
-        
-               
+
+
+
             </table>
         </div>
 
