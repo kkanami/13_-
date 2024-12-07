@@ -49,20 +49,20 @@
     <main>
         <h1>ログイン画面</h1>
 
-        <table>
-            <form method="post" class="main" action="index.php" 　name="form" id="form" onsubmit="return !! (check5()& check6())">
+       
+            <form method="post" class="login" action="index.php" 　name="form" id="form" onsubmit="return !! (check5()& check6())">
 
                 <div>
                     <label>メールアドレス</label>
                     <br>
-                    <input type="email" class="text" size="100" maxlength="100" id="mail" name="mail" value="">
+                    <input type="email" class="text" size="60" maxlength="100" id="mail" name="mail" value="">
                 </div>
                 <p style="color:#FF0000" id="mail_msg"></p>
 
                 <div>
                     <label>パスワード</label>
                     <br>
-                    <input type="password" pattern="^[0-9a-zA-Z]*$" class="text" size="35" maxlength="10" id="password" name="password" value="">
+                    <input type="password" pattern="^[0-9a-zA-Z]*$" class="text" size="60" maxlength="10" id="password" name="password" value="">
                 </div>
                 <p style="color:#FF0000" id="password_msg"></p>
 
@@ -77,8 +77,7 @@
 
 
 
-        </table>
-
+  
 
 
     </main>

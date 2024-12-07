@@ -131,12 +131,18 @@ h3 {
 }
 
 table {
+    margin: 20px auto 0 ;
+    border-radius: 10px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.login {
+    width: 450px;
     margin: 0 auto;
     border-radius: 10px;
-    width: 450px;
     padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-bottom: 60px;
 }
 
@@ -150,6 +156,12 @@ span {
     font-weight: bold;
     display: block;
     text-align: center;
+}
+
+.search_submit {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0;
 }
 
 
