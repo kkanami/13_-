@@ -1,31 +1,31 @@
 <?php
 //文字化け防止
 mb_internal_encoding("utf8");
+$mail=isset($_POST['mail']) ? $_POST['mail']:"";
 session_start();
 //DB接続
 try{
     $pdo=new PDO("mysql:dbname=practice;host=localhost;","root","");
-    $stmt=$pdo->query("select*from login_user_transaction where mail = '".$_POST['mail']."'");
+    $stmt=$pdo->query("select*from login_user_transaction where mail = '".$mail."'");
     $row=$stmt->fetch();
-      //hash化したパスを認証する  
+     
+        if(isset($_SESSION['user'])){
+    
+        }else {
+         //hash化したパスを認証する  
+            if($row['delete_flag']==0 && password_verify($_POST['password'], $row['password'])){
+                $_SESSION['user']=$row['authority'];
+                echo "<span>ログイン認証に成功しました</span>";
+                }else {
+                header("Location:login.php");
+                }
+        }
 
-        if($row['delete_flag']==0 && password_verify($_POST['password'], $row['password'])){
-            $_SESSION['user']=$row['authority'];
-            echo "<span>ログイン認証に成功しました</span>";
-            }else {
-            header("Location:login.php");
-            }
-        
     }catch(Exception $e){
         echo '<span style="color:#FF0000">エラーが発生したためログイン情報を取得できません。</span>：';
         echo $e->getMessage();
         exit();
-}
-
-if(!isset($_SESSION['user'])){
-    header("Location:login.php");
-    exit();
-}
+    }
 
 if($_SESSION['user']==1){
     $reg='<a href="regist.php">アカウント登録</a>';
