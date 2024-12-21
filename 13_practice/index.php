@@ -2,6 +2,7 @@
 //文字化け防止
 mb_internal_encoding("utf8");
 $mail=isset($_POST['mail']) ? $_POST['mail']:"";
+$pass=isset($_POST['password']) ? $_POST['password']:"";
 session_start();
 //DB接続
 try{
@@ -10,10 +11,21 @@ try{
     $row=$stmt->fetch();
      
         if(isset($_SESSION['user'])){
-    
+          if (!empty("$pass")){
+               if($row['delete_flag']==0 && password_verify("$pass", $row['password'])){
+                session_regenerate_id(true);
+                $_SESSION['user']=$row['authority'];
+                echo "<span>ログイン認証に成功しました</span>";
+                }else {
+                header("Location:login.php");
+                }
+        }else{
+
+          }
         }else {
          //hash化したパスを認証する  
-            if($row['delete_flag']==0 && password_verify($_POST['password'], $row['password'])){
+            if($row['delete_flag']==0 && password_verify("$pass", $row['password'])){
+                session_regenerate_id(true);
                 $_SESSION['user']=$row['authority'];
                 echo "<span>ログイン認証に成功しました</span>";
                 }else {
